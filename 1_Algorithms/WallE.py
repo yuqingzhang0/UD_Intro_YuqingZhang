@@ -165,20 +165,20 @@ class WallE:
                 self.move()
             elif self.check_wall() == True:
                 self.TURNS += 1
-                if ((self.TURNS)%2) == 1:
-                    self.turn_right()
-                    self.DROP_PICK_UP()
-                    self.move()
-                    self.turn_right()
-                    
-                elif ((self.TURNS)%2) == 0:
-                    self.turn_left()
-                    self.DROP_PICK_UP()
-                    self.move()
-                    self.turn_left()
-                    
-                elif self.Turns == 22:
+                if self.TURNS == 24:
                     self.BOX_OBTAINED = True
+                else:
+                    if ((self.TURNS)%2) == 1:
+                        self.turn_right()
+                        self.DROP_PICK_UP()
+                        self.move()
+                        self.turn_right()
+                    
+                    elif ((self.TURNS)%2) == 0:
+                        self.turn_left()
+                        self.DROP_PICK_UP()
+                        self.move()
+                        self.turn_left()
 
             
                 
