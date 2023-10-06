@@ -93,6 +93,8 @@ class WallE:
         self.BOX_OBTAINED = False
         self.WALL_Y = True
         self.WALLL_X = True
+        self.NO_BOX = []
+        self.OBSTACLE_LENGTH = 0
         
     # Declare any help functions here (also use all caps for these!!), it has to include self in the argument.
     # and make sure they are at this indent level
@@ -114,10 +116,10 @@ class WallE:
     def CHECK_WALL_X(self):
         self.turn_left()
         self.WALL_X = self.check_wall()
-        if self.WALL_X == True:
-            self.turn_right()
-        else:
+        if self.WALL_X == False:
             self.turn_left()
+        else:
+            self.turn_right()
         return self.WALL_X
 
     # These are the 5 functions you have to fill in
@@ -140,6 +142,8 @@ class WallE:
                 self.turn_right()
                 self.TURNS += 1
                 self.move()
+                    
+        pass #Remove this and fill with your own code
 
     def find_the_box(self):
         if not self.BOX_OBTAINED:
@@ -158,6 +162,8 @@ class WallE:
                     self.turn_left()
                     self.move()
                     self.turn_left()
+           
+
 
     def swap_all_boxes(self):
         if not self.BOX_OBTAINED:
@@ -180,12 +186,21 @@ class WallE:
                         self.DROP_PICK_UP()
                         self.move()
                         self.turn_left()
+            
+                    
+
+            
+                
+            #PICK UP BOXES AND RECORD POSITIONS WITHOUT BOXES
+        
+        
+        pass #Remove this and fill with your own code
 
     def walk_around_obstacle(self):
         if self.check_wall() == False:
-            if self.CHECK_WALL_Y() == True:
+            if self.CHECK_WALL_Y() == True: 
                 if self.WALKING_TO_OBSTACLE == False:
-                    self.move()
+                    self.move() # EMPTY ACTION
                 else:
                     self.move()
                     self.turn_left()
@@ -194,21 +209,29 @@ class WallE:
                     if self.WALKING_TO_OBSTACLE == False:
                         self.move()
                     else:
-                        self.move()
-                        self.turn_left()
+                        if self.OBSTACLE_LENGTH > 0:
+                            self.move()
+                            self.turn_left()
+                        else: # OBSTACLE CORNER ACTION
+                            
+                            self.move()
+                            self.turn_left()
+                            self.OBSTACLE_LENGTH == False
                     
                 else:
                         self.move()
         else:
-            if self.CHECK_WALL_Y() == False:
+            if self.CHECK_WALL_Y() == False: 
                 if self.CHECK_WALL_X() == False:
                     self.turn_right()
                     self.move()
                     self.turn_left()
                     self.WALKING_TO_OBSTACLE = True
-                else:
+                    self.OBSTACLE_LENGTH += 1
+                else:  # OBSTACLE CORNER
                     self.move()
-                    
+                    self.turn_left()
+                    self.OBSTACLE_LENGTH == 0
                 
                 
 
