@@ -140,8 +140,6 @@ class WallE:
                 self.turn_right()
                 self.TURNS += 1
                 self.move()
-                    
-        pass #Remove this and fill with your own code
 
     def find_the_box(self):
         if not self.BOX_OBTAINED:
@@ -160,8 +158,6 @@ class WallE:
                     self.turn_left()
                     self.move()
                     self.turn_left()
-           
-
 
     def swap_all_boxes(self):
         if not self.BOX_OBTAINED:
@@ -184,15 +180,6 @@ class WallE:
                         self.DROP_PICK_UP()
                         self.move()
                         self.turn_left()
-            
-                    
-
-            
-                
-            #PICK UP BOXES AND RECORD POSITIONS WITHOUT BOXES
-        
-        
-        pass #Remove this and fill with your own code
 
     def walk_around_obstacle(self):
         if self.check_wall() == False:
